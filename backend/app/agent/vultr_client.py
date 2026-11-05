@@ -66,11 +66,11 @@ class VultrInferenceClient:
         last_msg = messages[-1]["content"].lower() if messages else ""
 
         if "self-heal" in last_msg or "failed with" in last_msg or "traceback" in last_msg:
-            return """### Diagnostic Analysis
-The previous execution failed because of a mismatched column name or type conversion issue in the aggregation pipeline.
+            return r"""### Diagnostic Analysis
+The previous execution failed because of a column indexing or formatting mismatch in the aggregation pipeline.
 
 ### Resolution Strategy
-1. Safely inspect available columns dynamically before aggregation.
+1. Dynamically inspect column headers before aggregation.
 2. Handle NaN/null values gracefully using forward fill and numerical coercion.
 3. Generate the corrected revenue visualization and save to `corrected_analysis.png`.
 
@@ -116,8 +116,8 @@ print("[SUCCESS] Pipeline self-healed, visualization rendered to corrected_analy
 ```
 """
 
-        # Standard data analysis & visualization prompt
-        return """### Execution Plan
+        # Standard clean data analysis & visualization prompt
+        return r"""### Execution Plan
 1. **Data Ingestion**: Load the sales dataset and examine distribution statistics.
 2. **Aggregation**: Calculate revenue grouped by product category and region.
 3. **Visualization**: Produce an executive-ready bar chart and save as `category_performance.png`.
@@ -159,7 +159,7 @@ plt.gca().set_facecolor('#1E293B')
 
 for bar in bars:
     yval = bar.get_height()
-    plt.text(bar.get_x() + bar.get_width()/2.0, yval + 1000, f"${yval:,.0f}", ha='center', va='bottom', color='#00F0FF', fontsize=10)
+    plt.text(bar.get_x() + bar.get_width()/2.0, yval + 50, f"${yval:,.0f}", ha='center', va='bottom', color='#00F0FF', fontsize=10)
 
 plt.tight_layout()
 plt.savefig('category_performance.png', dpi=150)
