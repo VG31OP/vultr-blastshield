@@ -1,12 +1,27 @@
 # 🛡️ Vultr BlastShield: Autonomous DevSecOps & Data Agent
 > **"An agent that only chats is a demo; an agent that executes safely is a product."**  
-> *Submission for the **Vultr: Agent Rush Hackathon** (Track 1: Blast Radius Zero) on LabLab.ai*
+> *Official Submission for the **Vultr: Agent Rush Hackathon** (Track 1: Blast Radius Zero) on LabLab.ai*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Vultr Serverless Inference](https://img.shields.io/badge/Vultr-Serverless%20Inference-007BFC?logo=vultr)](https://www.vultr.com/)
 [![Track](https://img.shields.io/badge/Track-1%3A%20Blast%20Radius%20Zero-00F0FF)](#)
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python)](https://python.org)
 [![React](https://img.shields.io/badge/Frontend-React%2019%20%2B%20Tailwind-61DAFB?logo=react)](https://react.dev)
+[![Pitch Deck](https://img.shields.io/badge/Presentation-PDF%20Deck-7c4dff?logo=adobeacrobatreader)](assets/presentation.pdf)
+
+<p align="center">
+  <img src="assets/cover_image.png" alt="Vultr BlastShield Banner" width="100%" />
+</p>
+
+---
+
+## 📑 Quick Navigation & Key Assets
+
+- 📊 **Pitch Slide Presentation:** [`assets/presentation.pdf`](assets/presentation.pdf)
+- 🖼️ **16:9 Cover Banner:** [`assets/cover_image.png`](assets/cover_image.png)
+- 🛡️ **Track 1 Containment Moment Specs:** [See Containment Moment Demos](#-the-mandatory-containment-moment-demonstrations)
+- 🚀 **Local Setup Guide:** [Run in 2 Steps](#-quickstart--local-setup)
+- ☁️ **One-Click Vultr VM Deployment:** [Automated Shell Script](#️-one-click-deployment-on-vultr-cloud-compute-vm)
 
 ---
 
