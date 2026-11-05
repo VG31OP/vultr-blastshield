@@ -31,25 +31,25 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
   };
 
   return (
-    <div className="geo-panel bg-white p-6 relative overflow-visible shadow-[5px_5px_0_#252b3a]">
+    <div className="geo-panel bg-[#131b2e] p-6 relative overflow-visible shadow-[5px_5px_0_#090d16]">
       {/* Playful Colored Book Tab */}
-      <div className="absolute -top-3.5 left-6 px-3.5 py-1 rounded-md bg-[#9bf1cd] border-[2px] border-[#252b3a] text-[11px] font-black uppercase tracking-wider text-[#252b3a] shadow-[2px_2px_0_#252b3a]">
+      <div className="absolute -top-3.5 left-6 px-3.5 py-1 rounded-md bg-[#34d399] border-[2px] border-[#090d16] text-[11px] font-black uppercase tracking-wider text-[#090d16] shadow-[2px_2px_0_#090d16]">
         Mission Dispatcher
       </div>
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-2 pb-4 border-b-[2px] border-[#252b3a]/15">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-2 pb-4 border-b-[2px] border-[#2a3753]">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#ffd05b] border-[2px] border-[#252b3a] shadow-[2px_2px_0_#252b3a] flex items-center justify-center">
-            <Zap className="w-4 h-4 text-[#252b3a] fill-current" />
+          <div className="w-8 h-8 rounded-lg bg-[#fbbf24] border-[2px] border-[#090d16] shadow-[2px_2px_0_#090d16] flex items-center justify-center">
+            <Zap className="w-4 h-4 text-[#090d16] fill-current" />
           </div>
           <div>
-            <h2 className="text-base font-black text-[#253044] font-display">
+            <h2 className="text-base font-black text-[#f1f5f9] font-display">
               Autonomous Agent Mission Control
             </h2>
           </div>
         </div>
-        <span className="text-xs font-semibold text-[#526077]">
+        <span className="text-xs font-semibold text-[#94a3b8]">
           Powered by Vultr Serverless Inference & Ephemeral Sandboxes
         </span>
       </div>
@@ -63,7 +63,7 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
             disabled={isLoading}
             rows={3}
             placeholder="Instruct the agent to analyze data, execute code, or probe containment boundaries..."
-            className="w-full rounded-[14px] bg-[#fffdf5] border-[3px] border-[#252b3a] p-4 text-sm text-[#253044] font-reading placeholder-[#8c9ba5] focus:outline-none focus:ring-4 focus:ring-[#6434df]/20 shadow-[3px_3px_0_#252b3a] resize-none"
+            className="w-full rounded-[14px] bg-[#0c1220] border-[3px] border-[#2a3753] p-4 text-sm text-[#f1f5f9] font-reading placeholder-[#64748b] focus:outline-none focus:ring-4 focus:ring-[#7c4dff]/30 shadow-[3px_3px_0_#090d16] resize-none"
           />
           <button
             type="submit"
@@ -88,8 +88,8 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
       {/* Preset Action Tickets (Instant Judging Evaluation) */}
       <div className="flex flex-col gap-3 mt-5">
         <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#ff78c5] border border-[#252b3a]" />
-          <span className="text-xs font-black text-[#253044] uppercase tracking-wider font-display">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#f472b6] border border-[#090d16]" />
+          <span className="text-xs font-black text-[#f1f5f9] uppercase tracking-wider font-display">
             One-Click Judging & Demonstration Presets:
           </span>
         </div>
@@ -104,14 +104,14 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
               )
             }
             disabled={isLoading}
-            className="geo-card-action p-3.5 flex items-start gap-3 bg-[#e9fff5] text-left cursor-pointer group"
+            className="geo-card-action p-3.5 flex items-start gap-3 bg-[#082b20] border-[#34d399]/60 text-left cursor-pointer group"
           >
-            <div className="w-9 h-9 rounded-xl bg-white border-[2px] border-[#252b3a] shadow-[1px_1px_0_#252b3a] flex items-center justify-center shrink-0">
-              <BarChart3 className="w-5 h-5 text-[#0c7c4b]" />
+            <div className="w-9 h-9 rounded-xl bg-[#131b2e] border-[2px] border-[#34d399] shadow-[1px_1px_0_#090d16] flex items-center justify-center shrink-0">
+              <BarChart3 className="w-5 h-5 text-[#34d399]" />
             </div>
             <div>
-              <div className="text-xs font-black text-[#253044] font-display">Data & Chart Analysis</div>
-              <div className="text-[11px] text-[#4a5568] mt-0.5">Pandas + Seaborn in sandbox</div>
+              <div className="text-xs font-black text-[#f1f5f9] font-display">Data & Chart Analysis</div>
+              <div className="text-[11px] text-[#94a3b8] mt-0.5">Pandas + Seaborn in sandbox</div>
             </div>
           </button>
 
@@ -125,14 +125,14 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
               )
             }
             disabled={isLoading}
-            className="geo-card-action p-3.5 flex items-start gap-3 bg-[#ffecf5] text-left cursor-pointer group"
+            className="geo-card-action p-3.5 flex items-start gap-3 bg-[#330c20] border-[#f472b6]/60 text-left cursor-pointer group"
           >
-            <div className="w-9 h-9 rounded-xl bg-white border-[2px] border-[#252b3a] shadow-[1px_1px_0_#252b3a] flex items-center justify-center shrink-0">
-              <AlertOctagon className="w-5 h-5 text-[#b5146d]" />
+            <div className="w-9 h-9 rounded-xl bg-[#131b2e] border-[2px] border-[#f472b6] shadow-[1px_1px_0_#090d16] flex items-center justify-center shrink-0">
+              <AlertOctagon className="w-5 h-5 text-[#f472b6]" />
             </div>
             <div>
-              <div className="text-xs font-black text-[#253044] font-display">Containment: Secret Leak</div>
-              <div className="text-[11px] text-[#4a5568] mt-0.5">Zero-secret hygiene test</div>
+              <div className="text-xs font-black text-[#f1f5f9] font-display">Containment: Secret Leak</div>
+              <div className="text-[11px] text-[#94a3b8] mt-0.5">Zero-secret hygiene test</div>
             </div>
           </button>
 
@@ -146,14 +146,14 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
               )
             }
             disabled={isLoading}
-            className="geo-card-action p-3.5 flex items-start gap-3 bg-[#fff8e7] text-left cursor-pointer group"
+            className="geo-card-action p-3.5 flex items-start gap-3 bg-[#2f1b04] border-[#fbbf24]/60 text-left cursor-pointer group"
           >
-            <div className="w-9 h-9 rounded-xl bg-white border-[2px] border-[#252b3a] shadow-[1px_1px_0_#252b3a] flex items-center justify-center shrink-0">
-              <Flame className="w-5 h-5 text-[#8c6b00]" />
+            <div className="w-9 h-9 rounded-xl bg-[#131b2e] border-[2px] border-[#fbbf24] shadow-[1px_1px_0_#090d16] flex items-center justify-center shrink-0">
+              <Flame className="w-5 h-5 text-[#fbbf24]" />
             </div>
             <div>
-              <div className="text-xs font-black text-[#253044] font-display">Containment: CPU Runaway</div>
-              <div className="text-[11px] text-[#4a5568] mt-0.5">Watchdog kills after 10s</div>
+              <div className="text-xs font-black text-[#f1f5f9] font-display">Containment: CPU Runaway</div>
+              <div className="text-[11px] text-[#94a3b8] mt-0.5">Watchdog kills after 10s</div>
             </div>
           </button>
 
@@ -167,14 +167,14 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
               )
             }
             disabled={isLoading}
-            className="geo-card-action p-3.5 flex items-start gap-3 bg-[#f1ebff] text-left cursor-pointer group"
+            className="geo-card-action p-3.5 flex items-start gap-3 bg-[#1d143c] border-[#7c4dff]/60 text-left cursor-pointer group"
           >
-            <div className="w-9 h-9 rounded-xl bg-white border-[2px] border-[#252b3a] shadow-[1px_1px_0_#252b3a] flex items-center justify-center shrink-0">
-              <AlertOctagon className="w-5 h-5 text-[#6434df]" />
+            <div className="w-9 h-9 rounded-xl bg-[#131b2e] border-[2px] border-[#7c4dff] shadow-[1px_1px_0_#090d16] flex items-center justify-center shrink-0">
+              <AlertOctagon className="w-5 h-5 text-[#a78bfa]" />
             </div>
             <div>
-              <div className="text-xs font-black text-[#253044] font-display">Containment: Socket Block</div>
-              <div className="text-[11px] text-[#4a5568] mt-0.5">Network egress policy test</div>
+              <div className="text-xs font-black text-[#f1f5f9] font-display">Containment: Socket Block</div>
+              <div className="text-[11px] text-[#94a3b8] mt-0.5">Network egress policy test</div>
             </div>
           </button>
         </div>

@@ -2,17 +2,20 @@
 @import "tailwindcss";
 
 :root {
-  --dp-color-ground: #fffdf5;
-  --dp-color-panel: #ffffff;
-  --dp-color-ink: #253044;
-  --dp-color-outline: #252b3a;
-  --dp-color-accent: #6434df;
-  --dp-color-accent-secondary: #ff78c5;
-  --dp-color-accent-warm: #ffd05b;
-  --dp-color-accent-fresh: #9bf1cd;
-  --dp-color-field-soft: #e9fff5;
-  --dp-color-selection: #f1ebff;
-  --dp-color-rule-muted: #b8b6c5;
+  --dp-color-ground: #0b0f19;
+  --dp-color-panel: #131b2e;
+  --dp-color-panel-card: #182238;
+  --dp-color-ink: #f1f5f9;
+  --dp-color-ink-muted: #94a3b8;
+  --dp-color-outline: #2a3753;
+  --dp-color-outline-dark: #090d16;
+  --dp-color-accent: #7c4dff;
+  --dp-color-accent-secondary: #f472b6;
+  --dp-color-accent-warm: #fbbf24;
+  --dp-color-accent-fresh: #34d399;
+  --dp-color-field-soft: #0e1526;
+  --dp-color-selection: #2e1d5e;
+  --dp-color-rule-muted: #2d3b55;
   
   --dp-typography-display: 'Host Grotesk', 'PlayfulGeometricDisplay', sans-serif;
   --dp-typography-reading: 'Instrument Sans', 'PlayfulGeometricReading', sans-serif;
@@ -39,8 +42,8 @@ body {
 }
 
 ::selection {
-  background-color: var(--dp-color-selection);
-  color: var(--dp-color-accent);
+  background-color: var(--dp-color-accent);
+  color: #ffffff;
 }
 
 /* Custom Scrollbars */
@@ -60,36 +63,21 @@ body {
   background: var(--dp-color-accent);
 }
 
-/* Hard Offset Shadows & Controls */
+/* Hard Offset Shadows in Dark Mode */
 .geo-panel {
   background: var(--dp-color-panel);
   border: var(--dp-border-outline-width) solid var(--dp-color-outline);
   border-radius: var(--dp-radius-corner);
-  box-shadow: 4px 4px 0 var(--dp-color-outline);
+  box-shadow: 5px 5px 0 var(--dp-color-outline-dark);
   position: relative;
-}
-
-.geo-panel-violet {
-  background: var(--dp-color-panel);
-  border: var(--dp-border-outline-width) solid var(--dp-color-outline);
-  border-radius: var(--dp-radius-corner);
-  box-shadow: 5px 5px 0 var(--dp-color-accent);
-  position: relative;
-}
-
-.geo-panel-mint {
-  background: var(--dp-color-field-soft);
-  border: var(--dp-border-outline-width) solid var(--dp-color-outline);
-  border-radius: var(--dp-radius-corner);
-  box-shadow: 4px 4px 0 var(--dp-color-outline);
 }
 
 .geo-btn-primary {
   background: var(--dp-color-accent);
   color: #ffffff;
-  border: var(--dp-border-outline-width) solid var(--dp-color-outline);
+  border: var(--dp-border-outline-width) solid var(--dp-color-outline-dark);
   border-radius: 9999px;
-  box-shadow: 3px 3px 0 var(--dp-color-outline);
+  box-shadow: 3px 3px 0 var(--dp-color-outline-dark);
   font-family: var(--dp-typography-reading);
   font-weight: 700;
   transition: transform var(--dp-motion-interaction) ease, box-shadow var(--dp-motion-interaction) ease;
@@ -97,11 +85,11 @@ body {
 }
 .geo-btn-primary:hover:not(:disabled) {
   transform: translate(-1px, -1px);
-  box-shadow: 5px 5px 0 var(--dp-color-outline);
+  box-shadow: 5px 5px 0 var(--dp-color-outline-dark);
 }
 .geo-btn-primary:active:not(:disabled) {
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 var(--dp-color-outline);
+  box-shadow: 1px 1px 0 var(--dp-color-outline-dark);
 }
 .geo-btn-primary:focus-visible {
   outline: 3px solid var(--dp-color-accent-secondary);
@@ -109,11 +97,11 @@ body {
 }
 
 .geo-btn-secondary {
-  background: #ffffff;
+  background: var(--dp-color-panel-card);
   color: var(--dp-color-ink);
   border: var(--dp-border-outline-width) solid var(--dp-color-outline);
   border-radius: 9999px;
-  box-shadow: 3px 3px 0 var(--dp-color-outline);
+  box-shadow: 3px 3px 0 var(--dp-color-outline-dark);
   font-family: var(--dp-typography-reading);
   font-weight: 600;
   transition: transform var(--dp-motion-interaction) ease, box-shadow var(--dp-motion-interaction) ease, background-color var(--dp-motion-interaction) ease;
@@ -121,12 +109,12 @@ body {
 }
 .geo-btn-secondary:hover:not(:disabled) {
   transform: translate(-1px, -1px);
-  box-shadow: 5px 5px 0 var(--dp-color-outline);
-  background: var(--dp-color-selection);
+  box-shadow: 5px 5px 0 var(--dp-color-outline-dark);
+  background: #23314f;
 }
 .geo-btn-secondary:active:not(:disabled) {
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 var(--dp-color-outline);
+  box-shadow: 1px 1px 0 var(--dp-color-outline-dark);
 }
 .geo-btn-secondary:focus-visible {
   outline: 3px solid var(--dp-color-accent);
@@ -134,19 +122,18 @@ body {
 }
 
 .geo-card-action {
-  background: #ffffff;
   border: var(--dp-border-outline-width) solid var(--dp-color-outline);
   border-radius: 14px;
-  box-shadow: 3px 3px 0 var(--dp-color-outline);
+  box-shadow: 4px 4px 0 var(--dp-color-outline-dark);
   transition: transform var(--dp-motion-interaction) ease, box-shadow var(--dp-motion-interaction) ease;
 }
 .geo-card-action:hover:not(:disabled) {
   transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 var(--dp-color-outline);
+  box-shadow: 6px 6px 0 var(--dp-color-outline-dark);
 }
 .geo-card-action:active:not(:disabled) {
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 var(--dp-color-outline);
+  box-shadow: 1px 1px 0 var(--dp-color-outline-dark);
 }
 
 .font-display {
