@@ -32,3 +32,4 @@ class BaseSandbox(ABC):
     def is_available(self) -> bool:
         """Check if this sandbox provider is available in the current environment."""
         pass
+

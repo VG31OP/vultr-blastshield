@@ -169,3 +169,4 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
     </div>
   );
 };
+

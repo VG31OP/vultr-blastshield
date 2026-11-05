@@ -137,7 +137,7 @@ export const ArchitectureModal: React.FC<ArchitectureModalProps> = ({ isOpen, on
               Deployable in 2 minutes on any Vultr Cloud Compute instance using our automated bash script:
             </p>
             <pre className="p-2.5 rounded bg-slate-950 font-mono text-cyan-300 border border-slate-800">
-              curl -sSL https://raw.githubusercontent.com/vulr/blastshield/main/deploy/install_vultr.sh | sudo bash
+              curl -sSL https://raw.githubusercontent.com/VG31OP/vultr-blastshield/master/deploy/install_vultr.sh | sudo bash
             </pre>
           </div>
         </div>

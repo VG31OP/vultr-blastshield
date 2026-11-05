@@ -30,3 +30,4 @@ class SandboxManager:
                 cls._instance = SecureSubprocessSandbox()
 
         return cls._instance
+

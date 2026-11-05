@@ -112,7 +112,7 @@ The Hackathon judging criteria explicitly requires demonstrating containment in 
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/vultr-blastshield.git
+git clone https://github.com/VG31OP/vultr-blastshield.git
 cd vultr-blastshield
 ```
 
@@ -158,7 +158,7 @@ We provide an automated, zero-touch deployment script tailored for fresh Ubuntu 
 
 ```bash
 # On your Vultr Cloud Compute instance:
-curl -sSL https://raw.githubusercontent.com/your-username/vultr-blastshield/main/deploy/install_vultr.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/VG31OP/vultr-blastshield/master/deploy/install_vultr.sh | sudo bash
 ```
 
 Or deploy manually via Docker Compose:
@@ -203,3 +203,4 @@ backend/tests/test_sandbox.py::test_sandbox_kills_runaway_loop PASSED
 ## 📜 License
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details. Fully compliant with LabLab.ai open-source guidelines.
+

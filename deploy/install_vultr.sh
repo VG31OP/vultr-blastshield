@@ -42,3 +42,4 @@ echo "✅ DEPLOYMENT COMPLETE!"
 echo "🌐 Access your frontend at: http://$(curl -s ifconfig.me)"
 echo "📡 Backend API status: http://$(curl -s ifconfig.me):8000/api/health"
 echo "=========================================================="
+

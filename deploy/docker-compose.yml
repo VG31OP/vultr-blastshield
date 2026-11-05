@@ -40,3 +40,4 @@ services:
 networks:
   aegis-net:
     driver: bridge
+

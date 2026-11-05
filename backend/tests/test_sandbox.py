@@ -58,3 +58,4 @@ async def test_sandbox_kills_runaway_loop():
     assert result.timed_out is True
     assert result.exit_code == -9
     assert result.metrics.sandbox_destroyed is True
+

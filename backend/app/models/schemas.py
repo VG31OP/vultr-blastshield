@@ -90,3 +90,4 @@ class ExecutionResult(BaseModel):
     violations: List[SecurityViolation] = []
     artifacts: List[Artifact] = []
     summary: str = ""
+
