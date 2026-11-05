@@ -10,23 +10,30 @@ export const ArtifactViewer: React.FC<ArtifactViewerProps> = ({ artifacts }) => 
   if (artifacts.length === 0) return null;
 
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 backdrop-blur flex flex-col gap-4">
+    <div className="geo-panel bg-white p-6 relative overflow-visible shadow-[5px_5px_0_#252b3a]">
+      {/* Playful Book Tab */}
+      <div className="absolute -top-3.5 left-6 px-3.5 py-1 rounded-md bg-[#ffd05b] border-[2px] border-[#252b3a] text-[11px] font-black uppercase tracking-wider text-[#252b3a] shadow-[2px_2px_0_#252b3a]">
+        Verified Output Gallery ({artifacts.length})
+      </div>
+
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Image className="w-5 h-5 text-emerald-400" />
-          <h2 className="text-sm font-semibold text-slate-100 tracking-wide uppercase">
-            Sandbox Verified Artifacts & Receipts ({artifacts.length})
+      <div className="flex items-center justify-between pt-2 pb-4 border-b-[2px] border-[#252b3a]/15">
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-[#9bf1cd] border-[2px] border-[#252b3a] shadow-[2px_2px_0_#252b3a] flex items-center justify-center">
+            <Image className="w-4 h-4 text-[#252b3a]" />
+          </div>
+          <h2 className="text-base font-black text-[#253044] font-display">
+            Sandbox Verified Artifacts & Receipts
           </h2>
         </div>
-        <span className="text-xs text-emerald-400 flex items-center gap-1 font-mono">
+        <span className="text-xs font-bold text-[#0c7c4b] bg-[#e9fff5] px-3 py-1 rounded-full border-[2px] border-[#252b3a] shadow-[2px_2px_0_#252b3a] flex items-center gap-1.5 font-reading">
           <CheckCircle className="w-3.5 h-3.5" />
           Rendered in Isolation
         </span>
       </div>
 
       {/* Artifacts Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
         {artifacts.map((art, idx) => {
           const isImage = art.type.startsWith('image/');
           const imgSrc = isImage && art.content_base64
@@ -36,37 +43,41 @@ export const ArtifactViewer: React.FC<ArtifactViewerProps> = ({ artifacts }) => 
           return (
             <div
               key={idx}
-              className="rounded-lg border border-slate-800 bg-slate-950 p-4 flex flex-col justify-between gap-3 shadow-lg"
+              className="rounded-2xl border-[2.5px] border-[#252b3a] bg-[#fffdf5] p-5 flex flex-col justify-between gap-4 shadow-[3px_3px_0_#252b3a]"
             >
               <div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     {isImage ? (
-                      <Image className="w-4 h-4 text-cyan-400" />
+                      <div className="w-7 h-7 rounded-lg bg-[#f1ebff] border-[1.5px] border-[#252b3a] flex items-center justify-center">
+                        <Image className="w-4 h-4 text-[#6434df]" />
+                      </div>
                     ) : (
-                      <FileText className="w-4 h-4 text-purple-400" />
+                      <div className="w-7 h-7 rounded-lg bg-[#ffecf5] border-[1.5px] border-[#252b3a] flex items-center justify-center">
+                        <FileText className="w-4 h-4 text-[#ff78c5]" />
+                      </div>
                     )}
-                    <span className="text-xs font-semibold text-slate-200">{art.title}</span>
+                    <span className="text-sm font-black text-[#253044] font-display">{art.title}</span>
                   </div>
-                  <span className="text-[10px] font-mono text-slate-500 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+                  <span className="text-[11px] font-mono font-bold text-[#252b3a] bg-white px-2.5 py-1 rounded-full border-[1.5px] border-[#252b3a]">
                     {art.filename}
                   </span>
                 </div>
 
                 {/* Image Render */}
                 {isImage && imgSrc && (
-                  <div className="mt-3 rounded border border-slate-800 overflow-hidden bg-slate-900 flex items-center justify-center">
+                  <div className="mt-4 rounded-xl border-[2.5px] border-[#252b3a] overflow-hidden bg-white shadow-[2px_2px_0_#252b3a] p-2 flex items-center justify-center">
                     <img
                       src={imgSrc}
                       alt={art.title}
-                      className="max-h-72 object-contain hover:scale-105 transition-transform duration-300"
+                      className="max-h-80 w-auto object-contain rounded-lg"
                     />
                   </div>
                 )}
 
                 {/* CSV / Text Render */}
                 {!isImage && art.data && (
-                  <pre className="mt-3 p-3 rounded bg-slate-900 font-mono text-xs text-slate-300 max-h-48 overflow-y-auto border border-slate-800">
+                  <pre className="mt-4 p-4 rounded-xl bg-white font-mono text-xs text-[#253044] max-h-52 overflow-y-auto border-[2px] border-[#252b3a]">
                     {art.data}
                   </pre>
                 )}
@@ -77,10 +88,10 @@ export const ArtifactViewer: React.FC<ArtifactViewerProps> = ({ artifacts }) => 
                 <a
                   href={imgSrc}
                   download={art.filename}
-                  className="flex items-center justify-center gap-1.5 py-1.5 px-3 rounded bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs text-slate-300 font-medium transition"
+                  className="geo-btn-secondary py-2 px-4 text-xs font-bold flex items-center justify-center gap-2"
                 >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Download Artifact</span>
+                  <Download className="w-4 h-4 text-[#6434df]" />
+                  <span>Download Artifact Receipt</span>
                 </a>
               )}
             </div>

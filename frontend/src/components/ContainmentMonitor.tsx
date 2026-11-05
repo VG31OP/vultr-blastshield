@@ -16,77 +16,96 @@ export const ContainmentMonitor: React.FC<ContainmentMonitorProps> = ({
   const isAttackContained = status === 'contained' || violations.length > 0;
 
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 backdrop-blur flex flex-col gap-4">
+    <div className="geo-panel bg-white p-6 relative overflow-visible">
+      {/* Playful Colored Book Tab */}
+      <div className="absolute -top-3.5 left-6 px-3.5 py-1 rounded-md bg-[#ffd05b] border-[2px] border-[#252b3a] text-[11px] font-black uppercase tracking-wider text-[#252b3a] shadow-[2px_2px_0_#252b3a]">
+        Activity Ledger: Security Perimeter
+      </div>
+
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          {isAttackContained ? (
-            <ShieldAlert className="w-5 h-5 text-amber-400" />
-          ) : (
-            <ShieldCheck className="w-5 h-5 text-emerald-400" />
-          )}
-          <h2 className="text-sm font-semibold text-slate-100 tracking-wide uppercase">
-            Blast Radius Zero Perimeter Monitor
-          </h2>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-2 pb-4 border-b-[2px] border-[#252b3a]/15">
+        <div className="flex items-center gap-3">
+          <div className={`w-9 h-9 rounded-xl border-[2.5px] border-[#252b3a] shadow-[2px_2px_0_#252b3a] flex items-center justify-center ${isAttackContained ? 'bg-[#ff78c5]' : 'bg-[#9bf1cd]'}`}>
+            {isAttackContained ? (
+              <ShieldAlert className="w-5 h-5 text-[#252b3a] stroke-[2.5]" />
+            ) : (
+              <ShieldCheck className="w-5 h-5 text-[#252b3a] stroke-[2.5]" />
+            )}
+          </div>
+          <div>
+            <h2 className="text-base font-black text-[#253044] font-display">
+              Blast Radius Zero Perimeter Monitor
+            </h2>
+            <p className="text-xs text-[#526077]">
+              Mathematical containment enforcement & host boundary isolation
+            </p>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
-            {metrics?.ephemeral_id ? metrics.ephemeral_id : 'STANDBY'}
+
+        <div className="flex items-center gap-2 self-end sm:self-auto flex-wrap">
+          <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#f1ebff] text-[#6434df] border-[2px] border-[#252b3a] shadow-[2px_2px_0_#252b3a]">
+            {metrics?.ephemeral_id ? metrics.ephemeral_id : 'STANDBY ID'}
           </span>
           {metrics?.sandbox_destroyed && (
-            <span className="flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-800/60">
-              <Trash2 className="w-3 h-3 text-emerald-400" />
+            <span className="flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-[#9bf1cd] text-[#252b3a] border-[2px] border-[#252b3a] shadow-[2px_2px_0_#252b3a]">
+              <Trash2 className="w-3.5 h-3.5" />
               Ephemeral Wiped
             </span>
           )}
         </div>
       </div>
 
-      {/* Primary Metrics Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        {/* Metric 1: Secrets Exposed */}
-        <div className="rounded-lg border border-slate-800/80 bg-slate-950/70 p-3 flex flex-col justify-between">
-          <div className="flex items-center justify-between text-slate-400 text-xs">
+      {/* 4 Geometric Metric Tiles */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
+        {/* Tile 1: Secrets Exposed (Mint Tile) */}
+        <div className="rounded-[15px] border-[2.5px] border-[#252b3a] bg-[#e9fff5] p-4 shadow-[3px_3px_0_#252b3a] flex flex-col justify-between">
+          <div className="flex items-center justify-between text-xs font-bold text-[#253044]">
             <span>Secrets Exposed</span>
-            <Lock className="w-3.5 h-3.5 text-emerald-400" />
+            <div className="w-6 h-6 rounded-full bg-white border-[2px] border-[#252b3a] flex items-center justify-center shadow-[1px_1px_0_#252b3a]">
+              <Lock className="w-3.5 h-3.5 text-[#253044]" />
+            </div>
           </div>
-          <div className="mt-2 flex items-baseline gap-1.5">
-            <span className="text-xl font-bold font-mono text-emerald-400">
+          <div className="my-2 flex items-baseline gap-2">
+            <span className="text-3xl font-black font-display text-[#253044]">
               {metrics ? metrics.secrets_exposed_count : 0}
             </span>
-            <span className="text-[10px] text-slate-500 font-medium">/ 100% Scrubbed</span>
+            <span className="text-xs font-bold text-[#0c7c4b]">100% Scrubbed</span>
           </div>
-          <span className="text-[10px] text-slate-400 mt-1">Zero host keys injected</span>
+          <span className="text-[11px] font-medium text-[#4a5568]">Zero host API keys injected</span>
         </div>
 
-        {/* Metric 2: Network Isolation */}
-        <div className="rounded-lg border border-slate-800/80 bg-slate-950/70 p-3 flex flex-col justify-between">
-          <div className="flex items-center justify-between text-slate-400 text-xs">
+        {/* Tile 2: Network Egress (Violet Tile) */}
+        <div className="rounded-[15px] border-[2.5px] border-[#252b3a] bg-[#f1ebff] p-4 shadow-[3px_3px_0_#252b3a] flex flex-col justify-between">
+          <div className="flex items-center justify-between text-xs font-bold text-[#253044]">
             <span>Network Egress</span>
-            <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
+            <div className="w-6 h-6 rounded-full bg-white border-[2px] border-[#252b3a] flex items-center justify-center shadow-[1px_1px_0_#252b3a]">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#6434df]" />
+            </div>
           </div>
-          <div className="mt-2 flex items-baseline gap-1.5">
-            <span className="text-xl font-bold font-mono text-cyan-400">0 KB</span>
-            <span className="text-[10px] text-slate-500 font-medium">Blocked</span>
+          <div className="my-2 flex items-baseline gap-2">
+            <span className="text-3xl font-black font-display text-[#6434df]">0 KB</span>
+            <span className="text-xs font-bold text-[#6434df]">Strict Isolation</span>
           </div>
-          <span className="text-[10px] text-slate-400 mt-1">Zero outbound connections</span>
+          <span className="text-[11px] font-medium text-[#4a5568]">Zero outbound socket packets</span>
         </div>
 
-        {/* Metric 3: Memory Limit */}
-        <div className="rounded-lg border border-slate-800/80 bg-slate-950/70 p-3 flex flex-col justify-between">
-          <div className="flex items-center justify-between text-slate-400 text-xs">
+        {/* Tile 3: Memory Quota (Amber Tile) */}
+        <div className="rounded-[15px] border-[2.5px] border-[#252b3a] bg-[#fff8e7] p-4 shadow-[3px_3px_0_#252b3a] flex flex-col justify-between">
+          <div className="flex items-center justify-between text-xs font-bold text-[#253044]">
             <span>Memory Quota</span>
-            <HardDrive className="w-3.5 h-3.5 text-blue-400" />
+            <div className="w-6 h-6 rounded-full bg-white border-[2px] border-[#252b3a] flex items-center justify-center shadow-[1px_1px_0_#252b3a]">
+              <HardDrive className="w-3.5 h-3.5 text-[#253044]" />
+            </div>
           </div>
-          <div className="mt-2 flex items-baseline gap-1.5">
-            <span className="text-xl font-bold font-mono text-blue-300">
+          <div className="my-2 flex items-baseline gap-1.5">
+            <span className="text-3xl font-black font-display text-[#253044]">
               {metrics ? metrics.memory_used_mb : 0}
             </span>
-            <span className="text-[10px] text-slate-500 font-medium">/ {metrics?.memory_limit_mb || 256} MB</span>
+            <span className="text-xs font-bold text-[#8c6b00]">/ {metrics?.memory_limit_mb || 256} MB</span>
           </div>
-          <div className="w-full bg-slate-800 h-1.5 rounded-full mt-1.5 overflow-hidden">
+          <div className="w-full bg-white border-[2px] border-[#252b3a] h-3 rounded-full overflow-hidden shadow-[1px_1px_0_#252b3a]">
             <div
-              className="bg-blue-500 h-full transition-all duration-500"
+              className="bg-[#ffd05b] h-full transition-all duration-300"
               style={{
                 width: `${Math.min(
                   ((metrics?.memory_used_mb || 0) / (metrics?.memory_limit_mb || 256)) * 100,
@@ -97,49 +116,51 @@ export const ContainmentMonitor: React.FC<ContainmentMonitorProps> = ({
           </div>
         </div>
 
-        {/* Metric 4: Execution Watchdog */}
-        <div className="rounded-lg border border-slate-800/80 bg-slate-950/70 p-3 flex flex-col justify-between">
-          <div className="flex items-center justify-between text-slate-400 text-xs">
+        {/* Tile 4: Execution Watchdog (Pink Tile) */}
+        <div className="rounded-[15px] border-[2.5px] border-[#252b3a] bg-[#fff0f7] p-4 shadow-[3px_3px_0_#252b3a] flex flex-col justify-between">
+          <div className="flex items-center justify-between text-xs font-bold text-[#253044]">
             <span>Watchdog Cutoff</span>
-            <Clock className="w-3.5 h-3.5 text-purple-400" />
+            <div className="w-6 h-6 rounded-full bg-white border-[2px] border-[#252b3a] flex items-center justify-center shadow-[1px_1px_0_#252b3a]">
+              <Clock className="w-3.5 h-3.5 text-[#ff78c5]" />
+            </div>
           </div>
-          <div className="mt-2 flex items-baseline gap-1.5">
-            <span className="text-xl font-bold font-mono text-purple-300">
+          <div className="my-2 flex items-baseline gap-1.5">
+            <span className="text-3xl font-black font-display text-[#253044]">
               {metrics ? `${metrics.execution_time_sec}s` : '0.0s'}
             </span>
-            <span className="text-[10px] text-slate-500 font-medium">/ max 10.0s</span>
+            <span className="text-xs font-bold text-[#b5146d]">/ max 10.0s</span>
           </div>
-          <span className="text-[10px] text-slate-400 mt-1">Hard timeout enforced</span>
+          <span className="text-[11px] font-medium text-[#4a5568]">Hard cgroup watchdog cutoff</span>
         </div>
       </div>
 
       {/* Security Incident Alerts / Containment Moments */}
       {violations.length > 0 && (
-        <div className="rounded-lg border border-red-500/30 bg-red-950/30 p-3.5 flex flex-col gap-2">
-          <div className="flex items-center justify-between">
+        <div className="mt-5 rounded-[15px] border-[3px] border-[#252b3a] bg-[#ffecf5] p-4 shadow-[3px_3px_0_#252b3a] flex flex-col gap-2.5">
+          <div className="flex items-center justify-between flex-wrap gap-2">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-400 animate-ping" />
-              <span className="text-xs font-semibold text-red-300 uppercase tracking-wider">
+              <span className="w-3.5 h-3.5 rounded-full bg-[#ff78c5] border-[2px] border-[#252b3a]" />
+              <span className="text-xs font-black text-[#253044] uppercase tracking-wider font-display">
                 Containment Moment Triggered: {violations.length} Violation(s) Intercepted
               </span>
             </div>
-            <span className="text-[11px] font-mono text-red-400 bg-red-950/80 px-2 py-0.5 rounded border border-red-800/50">
-              BLAST RADIUS ZERO DEFENSE ACTIVE
+            <span className="text-xs font-bold font-mono text-[#253044] bg-[#ffd05b] px-3 py-0.5 rounded-full border-[2px] border-[#252b3a] shadow-[1px_1px_0_#252b3a]">
+              BLAST RADIUS ZERO ACTIVE
             </span>
           </div>
 
-          <div className="space-y-1.5 mt-1">
+          <div className="space-y-2 mt-1">
             {violations.map((v, i) => (
               <div
                 key={i}
-                className="flex items-start justify-between text-xs p-2 rounded bg-slate-950/60 border border-red-900/40"
+                className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 p-3 rounded-xl bg-white border-[2px] border-[#252b3a] shadow-[2px_2px_0_#252b3a]"
               >
                 <div>
-                  <div className="font-mono font-semibold text-red-300">{v.rule}</div>
-                  <div className="text-slate-300 text-[11px]">{v.description}</div>
+                  <div className="font-mono font-bold text-xs text-[#253044]">{v.rule}</div>
+                  <div className="text-xs text-[#4a5568]">{v.description}</div>
                 </div>
                 {v.blocked_payload && (
-                  <code className="text-[10px] font-mono bg-red-950 text-red-400 px-1.5 py-0.5 rounded border border-red-900/60">
+                  <code className="text-xs font-mono font-bold bg-[#ffecf5] text-[#b5146d] px-2.5 py-1 rounded-md border-[2px] border-[#252b3a]">
                     {v.blocked_payload}
                   </code>
                 )}

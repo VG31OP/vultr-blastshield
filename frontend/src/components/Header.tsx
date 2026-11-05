@@ -9,26 +9,29 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ health, onOpenArchitecture }) => {
   return (
-    <header className="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40 px-6 py-4">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        {/* Brand */}
-        <div className="flex items-center gap-3">
-          <div className="relative">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-cyan-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-              <Shield className="w-6 h-6 text-white" />
+    <header className="border-b-[3px] border-[#252b3a] bg-[#fffdf5] px-6 py-5 sticky top-0 z-40">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5">
+        {/* Brand & Geometric Assembly */}
+        <div className="flex items-center gap-4">
+          <div className="relative flex items-center justify-center">
+            {/* Playful Geometric shape cluster */}
+            <div className="w-12 h-12 rounded-[14px] bg-[#6434df] border-[3px] border-[#252b3a] shadow-[3px_3px_0_#252b3a] flex items-center justify-center -rotate-2">
+              <Shield className="w-6 h-6 text-white stroke-[2.5]" />
             </div>
-            <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-slate-950 animate-pulse" />
+            <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-[#ffd05b] border-[2px] border-[#252b3a] shadow-[1px_1px_0_#252b3a]" />
+            <div className="absolute -bottom-1 -left-2 w-4 h-4 bg-[#ff78c5] border-[2px] border-[#252b3a] rotate-12" />
           </div>
+
           <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-100 to-cyan-400 bg-clip-text text-transparent">
+            <div className="flex items-center gap-2.5 flex-wrap">
+              <h1 className="text-2xl font-black tracking-tight text-[#253044] font-display">
                 Vultr BlastShield
               </h1>
-              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 uppercase tracking-wider">
+              <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#9bf1cd] text-[#252b3a] border-[2px] border-[#252b3a] shadow-[2px_2px_0_#252b3a]">
                 Track 1: Blast Radius Zero
               </span>
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs font-medium text-[#4a5568] mt-0.5 font-reading">
               Autonomous Agent Control Plane with Ephemeral Sandboxes on Vultr
             </p>
           </div>
@@ -36,36 +39,33 @@ export const Header: React.FC<HeaderProps> = ({ health, onOpenArchitecture }) =>
 
         {/* Live Indicators & Controls */}
         <div className="flex items-center gap-3 flex-wrap">
-          {/* Vultr Inference Status */}
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-950/80 border border-slate-800 text-xs">
-            <Cpu className="w-4 h-4 text-cyan-400" />
-            <div className="flex flex-col">
-              <span className="text-slate-400 text-[10px] leading-tight">Inference Engine</span>
-              <span className="font-mono text-cyan-300 font-medium leading-tight">
-                {health?.vultr_inference.model || 'Vultr Serverless Inference'}
+          {/* Inference Status Badge */}
+          <div className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border-[2.5px] border-[#252b3a] shadow-[2px_2px_0_#252b3a] text-xs">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#ff78c5] border border-[#252b3a]" />
+            <div className="flex items-center gap-1.5 font-medium text-[#253044]">
+              <Cpu className="w-3.5 h-3.5 text-[#6434df]" />
+              <span className="font-bold text-[#6434df]">
+                {health?.vultr_inference.model || 'Llama 3.3 70B'}
               </span>
             </div>
-            <span className={`w-2 h-2 rounded-full ml-1 ${health?.vultr_inference.connected ? 'bg-emerald-400' : 'bg-cyan-400 animate-pulse'}`} />
           </div>
 
-          {/* Sandbox Status */}
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-950/80 border border-slate-800 text-xs">
-            <Server className="w-4 h-4 text-blue-400" />
-            <div className="flex flex-col">
-              <span className="text-slate-400 text-[10px] leading-tight">Containment Host</span>
-              <span className="font-mono text-blue-300 font-medium leading-tight">
-                {health?.sandbox.active_backend || 'Isolated Subprocess'} (0-Egress)
-              </span>
+          {/* Sandbox Status Badge */}
+          <div className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#e9fff5] border-[2.5px] border-[#252b3a] shadow-[2px_2px_0_#252b3a] text-xs">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#9bf1cd] border border-[#252b3a]" />
+            <div className="flex items-center gap-1 font-semibold text-[#253044]">
+              <Server className="w-3.5 h-3.5 text-[#253044]" />
+              <span>{health?.sandbox.active_backend || 'Isolated Subprocess'}</span>
+              <Lock className="w-3 h-3 text-[#253044] ml-0.5" />
             </div>
-            <Lock className="w-3.5 h-3.5 text-emerald-400 ml-1" />
           </div>
 
-          {/* Architecture Button */}
+          {/* Architecture Blueprint Button */}
           <button
             onClick={onOpenArchitecture}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/40 text-xs font-medium transition cursor-pointer"
+            className="geo-btn-secondary px-4 py-1.5 text-xs font-bold flex items-center gap-1.5"
           >
-            <Info className="w-4 h-4" />
+            <Info className="w-4 h-4 text-[#6434df]" />
             <span>Architecture</span>
           </button>
         </div>

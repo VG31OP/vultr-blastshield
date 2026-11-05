@@ -68,13 +68,19 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-[#fffdf5] text-[#253044] flex flex-col font-reading relative overflow-x-hidden">
+      {/* Decorative Geometric Pieces in Background (Fixed, non-intrusive) */}
+      <div className="absolute top-24 right-8 w-14 h-14 rounded-full bg-[#ffd05b]/40 border-[2.5px] border-[#252b3a] pointer-events-none -z-0 hidden md:block" />
+      <div className="absolute top-80 left-6 w-10 h-10 bg-[#ff78c5]/30 border-[2.5px] border-[#252b3a] rotate-45 pointer-events-none -z-0 hidden md:block" />
+      <div className="absolute top-[48rem] right-12 w-12 h-8 rounded-t-full bg-[#9bf1cd]/40 border-[2.5px] border-[#252b3a] pointer-events-none -z-0 hidden md:block" />
+
+      {/* Main Header */}
       <Header
         health={health}
         onOpenArchitecture={() => setArchitectureOpen(true)}
       />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 space-y-8 z-10">
         {/* Top: Blast Radius Zero Perimeter Monitor */}
         <ContainmentMonitor
           metrics={metrics}
@@ -100,11 +106,16 @@ export const App: React.FC = () => {
         />
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950 py-4 px-6 text-center text-xs text-slate-500">
-        <p>
-          Vultr BlastShield — Built for the <span className="text-cyan-400 font-semibold">Vultr: Agent Rush Hackathon</span> on LabLab.ai. Licensed under MIT.
-        </p>
+      {/* Inset Dark Slate Footer with Broad Curved Top */}
+      <footer className="mt-12 border-t-[3px] border-[#252b3a] bg-[#252b3a] text-[#fffdf5] py-8 px-6 text-center text-xs rounded-t-[32px] shadow-[0_-4px_0_#6434df]">
+        <div className="max-w-4xl mx-auto space-y-2">
+          <p className="font-display font-black text-sm tracking-wide">
+            Vultr BlastShield — Autonomous Agent Sandbox & Control Plane
+          </p>
+          <p className="text-[#b8b6c5] font-reading">
+            Built for the <span className="text-[#ffd05b] font-bold">Vultr: Agent Rush Hackathon</span> on LabLab.ai. Licensed under the MIT Open Source License.
+          </p>
+        </div>
       </footer>
 
       {/* Architecture & Specs Modal */}

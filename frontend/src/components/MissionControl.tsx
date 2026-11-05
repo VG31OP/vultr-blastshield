@@ -31,22 +31,31 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
   };
 
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 backdrop-blur flex flex-col gap-4">
+    <div className="geo-panel bg-white p-6 relative overflow-visible shadow-[5px_5px_0_#252b3a]">
+      {/* Playful Colored Book Tab */}
+      <div className="absolute -top-3.5 left-6 px-3.5 py-1 rounded-md bg-[#9bf1cd] border-[2px] border-[#252b3a] text-[11px] font-black uppercase tracking-wider text-[#252b3a] shadow-[2px_2px_0_#252b3a]">
+        Mission Dispatcher
+      </div>
+
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Zap className="w-5 h-5 text-cyan-400" />
-          <h2 className="text-sm font-semibold text-slate-100 tracking-wide uppercase">
-            Agent Mission Control
-          </h2>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pt-2 pb-4 border-b-[2px] border-[#252b3a]/15">
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-[#ffd05b] border-[2px] border-[#252b3a] shadow-[2px_2px_0_#252b3a] flex items-center justify-center">
+            <Zap className="w-4 h-4 text-[#252b3a] fill-current" />
+          </div>
+          <div>
+            <h2 className="text-base font-black text-[#253044] font-display">
+              Autonomous Agent Mission Control
+            </h2>
+          </div>
         </div>
-        <span className="text-xs text-slate-400">
+        <span className="text-xs font-semibold text-[#526077]">
           Powered by Vultr Serverless Inference & Ephemeral Sandboxes
         </span>
       </div>
 
       {/* Input Prompt Form */}
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3 mt-4">
         <div className="relative">
           <textarea
             value={prompt}
@@ -54,21 +63,21 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
             disabled={isLoading}
             rows={3}
             placeholder="Instruct the agent to analyze data, execute code, or probe containment boundaries..."
-            className="w-full rounded-lg bg-slate-950 border border-slate-800 px-4 py-3 text-sm text-slate-100 placeholder-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 resize-none font-sans"
+            className="w-full rounded-[14px] bg-[#fffdf5] border-[3px] border-[#252b3a] p-4 text-sm text-[#253044] font-reading placeholder-[#8c9ba5] focus:outline-none focus:ring-4 focus:ring-[#6434df]/20 shadow-[3px_3px_0_#252b3a] resize-none"
           />
           <button
             type="submit"
             disabled={isLoading || !prompt.trim()}
-            className="absolute bottom-3 right-3 flex items-center gap-1.5 px-4 py-1.5 rounded-md bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white text-xs font-semibold shadow-md shadow-cyan-500/20 transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            className="absolute bottom-4 right-4 geo-btn-primary px-5 py-2 text-xs flex items-center gap-2"
           >
             {isLoading ? (
               <>
-                <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                <RefreshCw className="w-4 h-4 animate-spin" />
                 <span>Executing in Sandbox...</span>
               </>
             ) : (
               <>
-                <Play className="w-3.5 h-3.5 fill-current" />
+                <Play className="w-4 h-4 fill-current" />
                 <span>Dispatch Mission</span>
               </>
             )}
@@ -76,13 +85,17 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
         </div>
       </form>
 
-      {/* Preset Action Buttons (Instant Judging Evaluation) */}
-      <div className="flex flex-col gap-2">
-        <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-          One-Click Judging & Demonstration Presets:
-        </span>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-          {/* Preset 1: Clean Data Engineering */}
+      {/* Preset Action Tickets (Instant Judging Evaluation) */}
+      <div className="flex flex-col gap-3 mt-5">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ff78c5] border border-[#252b3a]" />
+          <span className="text-xs font-black text-[#253044] uppercase tracking-wider font-display">
+            One-Click Judging & Demonstration Presets:
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+          {/* Preset 1: Clean Data Engineering (Mint Ticket) */}
           <button
             onClick={() =>
               handlePreset(
@@ -91,18 +104,18 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
               )
             }
             disabled={isLoading}
-            className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-950/70 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/60 transition text-left cursor-pointer group"
+            className="geo-card-action p-3.5 flex items-start gap-3 bg-[#e9fff5] text-left cursor-pointer group"
           >
-            <div className="p-2 rounded-md bg-blue-500/10 text-cyan-400 group-hover:bg-cyan-500/20">
-              <BarChart3 className="w-4 h-4" />
+            <div className="w-9 h-9 rounded-xl bg-white border-[2px] border-[#252b3a] shadow-[1px_1px_0_#252b3a] flex items-center justify-center shrink-0">
+              <BarChart3 className="w-5 h-5 text-[#0c7c4b]" />
             </div>
             <div>
-              <div className="text-xs font-semibold text-slate-200">Data & Chart Analysis</div>
-              <div className="text-[10px] text-slate-400">Pandas + Seaborn in sandbox</div>
+              <div className="text-xs font-black text-[#253044] font-display">Data & Chart Analysis</div>
+              <div className="text-[11px] text-[#4a5568] mt-0.5">Pandas + Seaborn in sandbox</div>
             </div>
           </button>
 
-          {/* Preset 2: Secret Harvesting Attack */}
+          {/* Preset 2: Secret Harvesting Attack (Pink Ticket) */}
           <button
             onClick={() =>
               handlePreset(
@@ -112,18 +125,18 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
               )
             }
             disabled={isLoading}
-            className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-950/70 border border-red-900/30 hover:border-red-500/50 hover:bg-red-950/20 transition text-left cursor-pointer group"
+            className="geo-card-action p-3.5 flex items-start gap-3 bg-[#ffecf5] text-left cursor-pointer group"
           >
-            <div className="p-2 rounded-md bg-red-500/10 text-red-400 group-hover:bg-red-500/20">
-              <AlertOctagon className="w-4 h-4" />
+            <div className="w-9 h-9 rounded-xl bg-white border-[2px] border-[#252b3a] shadow-[1px_1px_0_#252b3a] flex items-center justify-center shrink-0">
+              <AlertOctagon className="w-5 h-5 text-[#b5146d]" />
             </div>
             <div>
-              <div className="text-xs font-semibold text-red-300">Containment: Secret Leak</div>
-              <div className="text-[10px] text-slate-400">Zero-secret hygiene test</div>
+              <div className="text-xs font-black text-[#253044] font-display">Containment: Secret Leak</div>
+              <div className="text-[11px] text-[#4a5568] mt-0.5">Zero-secret hygiene test</div>
             </div>
           </button>
 
-          {/* Preset 3: CPU Runaway Loop */}
+          {/* Preset 3: CPU Runaway Loop (Amber Ticket) */}
           <button
             onClick={() =>
               handlePreset(
@@ -133,18 +146,18 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
               )
             }
             disabled={isLoading}
-            className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-950/70 border border-amber-900/30 hover:border-amber-500/50 hover:bg-amber-950/20 transition text-left cursor-pointer group"
+            className="geo-card-action p-3.5 flex items-start gap-3 bg-[#fff8e7] text-left cursor-pointer group"
           >
-            <div className="p-2 rounded-md bg-amber-500/10 text-amber-400 group-hover:bg-amber-500/20">
-              <Flame className="w-4 h-4" />
+            <div className="w-9 h-9 rounded-xl bg-white border-[2px] border-[#252b3a] shadow-[1px_1px_0_#252b3a] flex items-center justify-center shrink-0">
+              <Flame className="w-5 h-5 text-[#8c6b00]" />
             </div>
             <div>
-              <div className="text-xs font-semibold text-amber-300">Containment: CPU Runaway</div>
-              <div className="text-[10px] text-slate-400">Watchdog kills after 10s</div>
+              <div className="text-xs font-black text-[#253044] font-display">Containment: CPU Runaway</div>
+              <div className="text-[11px] text-[#4a5568] mt-0.5">Watchdog kills after 10s</div>
             </div>
           </button>
 
-          {/* Preset 4: Outbound Socket Exfiltration */}
+          {/* Preset 4: Outbound Socket Exfiltration (Violet Ticket) */}
           <button
             onClick={() =>
               handlePreset(
@@ -154,14 +167,14 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
               )
             }
             disabled={isLoading}
-            className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-950/70 border border-purple-900/30 hover:border-purple-500/50 hover:bg-purple-950/20 transition text-left cursor-pointer group"
+            className="geo-card-action p-3.5 flex items-start gap-3 bg-[#f1ebff] text-left cursor-pointer group"
           >
-            <div className="p-2 rounded-md bg-purple-500/10 text-purple-400 group-hover:bg-purple-500/20">
-              <AlertOctagon className="w-4 h-4" />
+            <div className="w-9 h-9 rounded-xl bg-white border-[2px] border-[#252b3a] shadow-[1px_1px_0_#252b3a] flex items-center justify-center shrink-0">
+              <AlertOctagon className="w-5 h-5 text-[#6434df]" />
             </div>
             <div>
-              <div className="text-xs font-semibold text-purple-300">Containment: Socket Block</div>
-              <div className="text-[10px] text-slate-400">Network egress policy test</div>
+              <div className="text-xs font-black text-[#253044] font-display">Containment: Socket Block</div>
+              <div className="text-[11px] text-[#4a5568] mt-0.5">Network egress policy test</div>
             </div>
           </button>
         </div>
@@ -169,4 +182,3 @@ export const MissionControl: React.FC<MissionControlProps> = ({ onExecute, isLoa
     </div>
   );
 };
-
