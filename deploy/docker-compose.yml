@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile.backend
+    container_name: vultr-blastshield-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - VULTR_INFERENCE_API_KEY=${VULTR_INFERENCE_API_KEY}
+      - VULTR_INFERENCE_ENDPOINT=${VULTR_INFERENCE_ENDPOINT:-https://api.vultrinference.com/v1}
+      - VULTR_INFERENCE_MODEL=${VULTR_INFERENCE_MODEL:-llama-3.3-70b-instruct}
+      - SANDBOX_BACKEND=docker
+      - SANDBOX_MEMORY_LIMIT_MB=256
+      - SANDBOX_TIMEOUT_SECONDS=10
+      - SANDBOX_CPU_QUOTA=0.5
+      - ALLOWED_ORIGINS=*
+    volumes:
+      # Connect to host Docker socket to manage ephemeral isolated containers
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - aegis-net
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: vultr-blastshield-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - aegis-net
+
+networks:
+  aegis-net:
+    driver: bridge
